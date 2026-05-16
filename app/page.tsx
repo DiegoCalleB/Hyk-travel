@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { InstagramEmbed } from "react-social-media-embed";
 
 import { parseCSV, generateSlug } from "./lib/trips";
 
@@ -708,7 +709,7 @@ export default function Home() {
                     {isFeatured ? (
                       <>
                         <div className="featured-bg">
-                          <img src={trip.imagen} loading="lazy" alt={trip.titulo || "Viaje descacado"} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -1}} />
+                          <img src={trip.imagen} alt={trip.titulo || "Viaje descacado"} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover"}} />
                         </div>
                         <div className="featured-overlay">
                           <div className="featured-badge">
@@ -875,7 +876,7 @@ export default function Home() {
                     ) : (
                       <>
                         <div className="trip-image">
-                          <img src={trip.imagen} loading="lazy" alt={trip.titulo || "Viaje"} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -1}} />
+                          <img src={trip.imagen} alt={trip.titulo || "Viaje"} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover"}} />
                           {tagText && (
                             <span className={`trip-tag ${tagClass}`}>
                               {tagText}
@@ -1008,7 +1009,7 @@ export default function Home() {
                 transition: "transform 0.3s",
               }} >
               <div style={{ position: "relative", height: "240px" }}>
-                <img loading="lazy"
+                <img
                   src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=85"
                   alt="Maldivas"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -1135,7 +1136,7 @@ export default function Home() {
                 transition: "transform 0.3s",
               }} >
               <div style={{ position: "relative", height: "240px" }}>
-                <img loading="lazy"
+                <img
                   src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&q=85"
                   alt="Riviera Maya"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -1262,7 +1263,7 @@ export default function Home() {
                 transition: "transform 0.3s",
               }} >
               <div style={{ position: "relative", height: "240px" }}>
-                <img loading="lazy"
+                <img
                   src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=85"
                   alt="Japón"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -1478,7 +1479,7 @@ export default function Home() {
                         justifyContent: "center",
                       }}
                     >
-                      <a href="#" className="btn-secondary" style={{ margin: "2rem" }}>Ver en Instagram</a>
+                      <InstagramEmbed url={embedUrl} width="100%" />
                     </div>
                   </div>
                 );

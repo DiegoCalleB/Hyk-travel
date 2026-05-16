@@ -18,37 +18,8 @@ export default function Header() {
   return (
     <nav className={isMobileMenuOpen ? "mobile-menu-open" : ""}>
       <Link href="/" className="logo">
-        <div className="logo-mark">
-          <svg viewBox="0 0 200 80" fill="none">
-            <path
-              d="M5 40 Q 20 20, 60 27 Q 100 33, 120 50 Q 105 65, 65 60 Q 15 55, 5 40 Z"
-              fill="#6DD5D0"
-              opacity="0.75"
-            />
-            <text
-              x="50"
-              y="53"
-              fontFamily="var(--font-playfair), serif"
-              fontSize="44"
-              fontWeight="500"
-              fill="var(--ink)"
-              letterSpacing="-1.5"
-            >
-              HyK
-            </text>
-            <text
-              x="50"
-              y="72"
-              fontFamily="var(--font-outfit), sans-serif"
-              fontSize="12"
-              fontWeight="400"
-              fill="var(--ink-soft)"
-              letterSpacing="4"
-            >
-              TRAVEL
-            </text>
-            <path d="M148 23 L165 17 L160 25 L170 23 L162 31 L155 31 Z" fill="#FF6B8A" />
-          </svg>
+        <div style={{ height: "70px", display: "flex", alignItems: "center" }}>
+          <img src="/logo.png" alt="Hyk Travel" style={{ height: "100%", width: "auto", objectFit: "contain" }} />
         </div>
       </Link>
 

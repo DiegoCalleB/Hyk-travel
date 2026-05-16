@@ -77,6 +77,35 @@ export function parseCSVLine(line: string) {
   return result;
 }
 
+export function fixImageUrl(url: string) {
+  if (!url) return '';
+  url = url.trim();
+
+  // Formato: https://drive.google.com/file/d/ID/view
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch) {
+    return `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
+  }
+
+  // Formato: https://drive.google.com/open?id=ID
+  const driveOpen = url.match(/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/);
+  if (driveOpen) {
+    return `https://drive.google.com/uc?export=view&id=${driveOpen[1]}`;
+  }
+
+  // Formato: https://docs.google.com/uc?id=ID
+  const docsMatch = url.match(/docs\.google\.com.*[?&]id=([a-zA-Z0-9_-]+)/);
+  if (docsMatch) {
+    return `https://drive.google.com/uc?export=view&id=${docsMatch[1]}`;
+  }
+
+  // Ya es uc?export=view — dejar tal cual
+  if (url.includes('uc?export=view')) return url;
+
+  // Cualquier otra URL (Unsplash, etc.) — dejar tal cual
+  return url;
+}
+
 export function parseCSV(str: string) {
   const lines = str.split(/\r?\n/).filter((l) => l.trim());
   if (lines.length < 2) return [];
@@ -102,6 +131,7 @@ export function parseCSV(str: string) {
     });
     if (!obj.tipo) obj.tipo = "";
     if (!obj.destino) obj.destino = "";
+    if (obj.imagen) obj.imagen = fixImageUrl(obj.imagen);
     return obj;
   });
 }

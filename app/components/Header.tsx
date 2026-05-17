@@ -18,8 +18,8 @@ export default function Header() {
   return (
     <nav className={isMobileMenuOpen ? "mobile-menu-open" : ""}>
       <Link href="/" className="logo">
-        <div style={{ height: "70px", display: "flex", alignItems: "center" }}>
-          <img src="/logo.png" alt="Hyk Travel" style={{ height: "100%", width: "auto", objectFit: "contain" }} />
+        <div className="logo-wrapper">
+          <img src="/logo.png" alt="Hyk Travel" style={{ width: "auto", height: "100%", objectFit: "contain" }} />
         </div>
       </Link>
 
